@@ -5,7 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Hello App...'
-                // Optional: npm install
             }
         }
         stage('Simulate Build Step') {
@@ -17,6 +16,18 @@ pipeline {
             steps {
                 echo 'Running Tests...'
                 echo 'Running basic test...'
+            }
+        }
+        stage('Advanced Test') {
+            steps {
+                script {
+                    echo 'Running advanced test...'
+                    def testPassed = false // Simulate test failure
+
+                    if (!testPassed) {
+                        error('Advanced test failed!')
+                    }
+                }
             }
         }
     }
